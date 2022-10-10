@@ -84,9 +84,22 @@ input[type="range"]:active::-webkit-slider-thumb {
 .wrap {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 95vmin;
   height: 600px;
   background-color: #fff;
+}
+
+
+.values {
+  background-color: #3264fe;
+  width: 32%;
+  position: relative;
+  padding: 10px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
 }
