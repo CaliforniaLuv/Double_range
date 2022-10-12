@@ -10,7 +10,7 @@
 .slider-track {
   width: 100%;
   height: 5px;
-  background-color: #d5d5d5;
+  background: #d5d5d5;
   position: absolute;
   margin: auto;
   top: 0;
