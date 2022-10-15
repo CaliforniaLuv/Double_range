@@ -13,7 +13,20 @@
   background: #d5d5d5;
   position: absolute;
   margin: auto;
-  top: 0;
-  bottom: 0;
   border-radius: 5px;
+}
+
+.slider-keywords {
+  display: flex;
+  margin-top: 20px ;
+} 
+
+.slider-keywords > div {
+ display: flex;
+
+ width: 30px;
+ flex-direction: column;
+ align-items: center;
+ position: absolute;
+ transform: translateX(-50%);
 }

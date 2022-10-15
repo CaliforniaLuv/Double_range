@@ -3,6 +3,8 @@ import "./Double_Slider.css"
 
 function Double_Slider() {
 
+  const arr = ["0", "10K", "20K", "50K", "100K", "150K", "200K", "500K", "1M", "Max"]
+
   const [range, setRange] = useState({
     left: 0,
     right: 100
@@ -12,10 +14,12 @@ function Double_Slider() {
 
   const handleLeft = (e) => {
     setRange({...range, left: e.target.value})
+    console.log(123)
   }
 
   const handleRight = (e) => {
     setRange({...range, right: e.target.value})
+    console.log(321)
   }
 
   useEffect(() => {
@@ -47,7 +51,17 @@ function Double_Slider() {
         <div className="slider-track" ref={track}>
           <input type="range" min="0" max="100" step="11.11"  id="Double-left" value={range.left} onChange={handleLeft}/>
           <input type="range" min="0" max="100" step="11.11" id="Double-right" value={range.right} onChange={handleRight}/>
+          
         </div>
+        <div className="slider-keywords">
+          {arr.map((el, idx) => 
+            (
+              <div style={{left: (idx * 11) + "%"}}>
+                <label>|</label>
+                <span>{el}</span>
+              </div>
+            ))}
+          </div>
       </main>
     </>
   );
