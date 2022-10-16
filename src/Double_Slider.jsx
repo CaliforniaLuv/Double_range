@@ -3,8 +3,8 @@ import "./Double_Slider.css"
 
 function Double_Slider() {
 
-  const arr = ["0", "10K", "20K", "50K", "100K", "150K", "200K", "500K", "1M", "Max"]
-
+  const arr = [{word:"0", left:-0.5}, {word:"10K", left:11.5}, {word:"20K", left:23.8}, {word:"50K", left: 36}, {word:"100K", left:48.1}, {word:"150K", left:60.2}, {word: "200K", left:72.4}, {word:"500K", left:84.5}, {word:"1M", left:96.7}]
+  const arr_copy = ["0", "10K", "20K", "50K", "100K", "150K", "200K", "500K", "1M"]
   const [range, setRange] = useState({
     left: 0,
     right: 100
@@ -49,14 +49,22 @@ function Double_Slider() {
         </div>
       <main className="container">
         <div className="slider-track" ref={track}>
-          <input type="range" min="0" max="100" step="11.11"  id="Double-left" value={range.left} onChange={handleLeft}/>
-          <input type="range" min="0" max="100" step="11.11" id="Double-right" value={range.right} onChange={handleRight}/>
+          <input type="range" min="0" max="100" step="12.5"  id="Double-left" value={range.left} onChange={handleLeft}/>
+          <input type="range" min="0" max="100" step="12.5" id="Double-right" value={range.right} onChange={handleRight}/>
           
         </div>
         <div className="slider-keywords">
-          {arr.map((el, idx) => 
+          {/* {arr.map((el) => 
             (
-              <div style={{left: (idx * 11) + "%"}}>
+              <div style={{left: el.left  + "%"}}>
+                <label>|</label>
+                <span>{el.word}</span>
+              </div>
+            ))} */}
+
+          {arr_copy.map((el, idx) => 
+            (
+              <div style={{left: 11.5 * idx + "%"}}>
                 <label>|</label>
                 <span>{el}</span>
               </div>

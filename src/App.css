@@ -47,12 +47,12 @@ input[type="range"]::-ms-track {
 /* 구글 크롬 버전 thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 1.7em;
-  width: 1.7em;
+  height: 1.3em;
+  width: 1.3em;
   background-color: #fff;
   cursor: grab;
   border-radius: 10px;
-  margin-top: -9px;
+  margin-top: -7px;
   pointer-events: auto;
   box-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
   /* touch-action: pan-x; */
@@ -87,7 +87,7 @@ input[type="range"]::-ms-thumb {
 
 input[type="range"]:active::-webkit-slider-thumb {
   background-color: #fff;
-  border: 3px solid #3264fe;
+  border: 2px solid #3264fe;
 }
 
 .wrap {
@@ -96,15 +96,16 @@ input[type="range"]:active::-webkit-slider-thumb {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 95vmin;
+  width: 35vmin;
   height: 600px;
   background-color: #fff;
+  padding: 30px;
 }
 
 
 .values {
   background-color: #3264fe;
-  width: 32%;
+  width: 100%;
   position: relative;
   padding: 10px 0;
   border-radius: 10px;
@@ -112,16 +113,3 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 25px;
   color: #fff;
 }
-
-/* position: absolute;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    cursor: -webkit-grab;
-    margin-top: -7px;
-    cursor: grab;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 0.25px solid #dfdfdf;
-    box-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
-    touch-action: pan-x; */
