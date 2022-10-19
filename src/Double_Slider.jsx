@@ -48,6 +48,9 @@ function Double_Slider() {
           <span className="right-value"> {range.right}</span>
         </div>
       <main className="container">
+        <div className="keywords-click">
+          {arr_copy.map((el, idx) => (<div key={idx} onClick={()=>console.log(idx)} style={{width: "30px", height: "5px", zIndex: range.left / 12.5 !== idx  ? range.right / 12.5 !== idx  ? "2" : null :  null}}></div>))}
+        </div>
         <div className="slider-track" ref={track}>
           <input type="range" min="0" max="100" step="12.5"  id="Double-left" value={range.left} onChange={handleLeft}/>
           <input type="range" min="0" max="100" step="12.5" id="Double-right" value={range.right} onChange={handleRight}/>
@@ -64,12 +67,13 @@ function Double_Slider() {
 
           {arr_copy.map((el, idx) => 
             (
-              <div style={{left: 11.5 * idx + "%"}}>
+              <div key={idx} style={{left: 11.5 * idx + "%"}}>
                 <label>|</label>
                 <span>{el}</span>
               </div>
             ))}
           </div>
+
       </main>
     </>
   );
