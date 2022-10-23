@@ -7,23 +7,25 @@ function Double_Slider() {
   const arr_copy = ["0", "10K", "20K", "50K", "100K", "150K", "200K", "500K", "1M"]
   const [range, setRange] = useState({
     left: 0,
-    right: 100
+    left_pos: 0,
+    right: 100,
+    right_pos: 8,
   })
 
   const track = useRef(0)
 
   const handleLeft = (e) => {
-    setRange({...range, left: e.target.value})
-    console.log(123)
+    setRange({...range, left: e.target.value, left_pos: e.target.value / 12.5})
+    console.log(e.target.value)
   }
 
   const handleRight = (e) => {
-    setRange({...range, right: e.target.value})
+    setRange({...range, right: e.target.value, right_pos: e.target.value / 12.5})
     console.log(321)
   }
 
   useEffect(() => {
-    if(range.left <= range.right) {
+    if(+range.left <= +range.right) {
       trackRightEffect()
     } else {
       trackLeftEffect()
@@ -40,6 +42,18 @@ function Double_Slider() {
       #3264fe ${range.left}%, #dadae5 ${range.left}%)`
   }
 
+  const trackClick = (idx) => {
+    console.log("left :",range.left_pos - idx)
+    console.log("right :", range.right_pos - idx)
+    
+    if(Math.abs(range.left_pos - idx) < Math.abs(range.right_pos - idx)) {
+      
+      handleLeft({target: { value: idx * 12.5}})
+    } else {
+      handleRight({target: { value: idx * 12.5}})
+    }
+  }
+
   return (
     <>
      <div className="values">
@@ -49,7 +63,8 @@ function Double_Slider() {
         </div>
       <main className="container">
         <div className="keywords-click">
-          {arr_copy.map((el, idx) => (<div key={idx} onClick={()=>console.log(idx)} style={{width: "30px", height: "5px", zIndex: range.left / 12.5 !== idx  ? range.right / 12.5 !== idx  ? "2" : null :  null}}></div>))}
+          {/* onClick에 idx를 이용하여 특정 트리거에 걸리면 클릭 막기가 필요 */}
+          {arr_copy.map((el, idx) => (<div key={idx} onClick={()=>trackClick(idx)} style={{width: "30px", height: "5px", zIndex: range.left / 12.5 !== idx  ? range.right / 12.5 !== idx  ? "2" : null :  null}}></div>))}
         </div>
         <div className="slider-track" ref={track}>
           <input type="range" min="0" max="100" step="12.5"  id="Double-left" value={range.left} onChange={handleLeft}/>
@@ -67,7 +82,7 @@ function Double_Slider() {
 
           {arr_copy.map((el, idx) => 
             (
-              <div key={idx} style={{left: 11.5 * idx + "%"}}>
+              <div key={idx} style={{left: 11 * idx + "%"}}>
                 <label>|</label>
                 <span>{el}</span>
               </div>
